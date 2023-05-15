@@ -1,0 +1,170 @@
+>>>> [1] xpm2_open1 <<<<
+Executing command 'xpm2_open' ...
+Executing command 'input/blarg.xpm' ...
+Executing command 'save' ...
+PNG.cpp:31:30: runtime error: member call on null pointer of type 'const struct Image'
+Image.cpp:34:18: runtime error: member access within null pointer of type 'const struct Image'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==7860==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000004 (pc 0x55bd2db55439 bp 0x7ffe334d9f20 sp 0x7ffe334d9f10 T0)
+==7860==The signal is caused by a READ memory access.
+==7860==Hint: address points to the zero page.
+    #0 0x55bd2db55438 in prog::Image::height() const /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Image.cpp:34
+    #1 0x55bd2dba4d24 in prog::saveToPNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, prog::Image const*) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/PNG.cpp:31
+    #2 0x55bd2db5795e in prog::Script::save() /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Script.cpp:135
+    #3 0x55bd2db56c32 in prog::Script::run() /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Script.cpp:57
+    #4 0x55bd2db4720a in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:43
+    #5 0x55bd2db47f8d in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:79
+    #6 0x55bd2db49d37 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:165
+    #7 0x55bd2db4632b in main /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:186
+    #8 0x7fd4e0de4082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #9 0x55bd2db45edd in _start (/mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test+0x88edd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Image.cpp:34 in prog::Image::height() const
+==7860==ABORTING
+>>>> [2] xpm2_open2 <<<<
+Executing command 'xpm2_open' ...
+Executing command 'input/squares.xpm' ...
+Executing command 'save' ...
+PNG.cpp:31:30: runtime error: member call on null pointer of type 'const struct Image'
+Image.cpp:34:18: runtime error: member access within null pointer of type 'const struct Image'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==7861==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000004 (pc 0x55bd2db55439 bp 0x7ffe334d9f20 sp 0x7ffe334d9f10 T0)
+==7861==The signal is caused by a READ memory access.
+==7861==Hint: address points to the zero page.
+    #0 0x55bd2db55438 in prog::Image::height() const /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Image.cpp:34
+    #1 0x55bd2dba4d24 in prog::saveToPNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, prog::Image const*) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/PNG.cpp:31
+    #2 0x55bd2db5795e in prog::Script::save() /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Script.cpp:135
+    #3 0x55bd2db56c32 in prog::Script::run() /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Script.cpp:57
+    #4 0x55bd2db4720a in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:43
+    #5 0x55bd2db47f8d in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:79
+    #6 0x55bd2db49d37 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:165
+    #7 0x55bd2db4632b in main /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:186
+    #8 0x7fd4e0de4082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #9 0x55bd2db45edd in _start (/mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test+0x88edd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Image.cpp:34 in prog::Image::height() const
+==7861==ABORTING
+>>>> [3] xpm2_open3 <<<<
+Executing command 'xpm2_open' ...
+Executing command 'input/tetris.xpm' ...
+Executing command 'save' ...
+PNG.cpp:31:30: runtime error: member call on null pointer of type 'const struct Image'
+Image.cpp:34:18: runtime error: member access within null pointer of type 'const struct Image'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==7862==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000004 (pc 0x55bd2db55439 bp 0x7ffe334d9f20 sp 0x7ffe334d9f10 T0)
+==7862==The signal is caused by a READ memory access.
+==7862==Hint: address points to the zero page.
+    #0 0x55bd2db55438 in prog::Image::height() const /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Image.cpp:34
+    #1 0x55bd2dba4d24 in prog::saveToPNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, prog::Image const*) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/PNG.cpp:31
+    #2 0x55bd2db5795e in prog::Script::save() /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Script.cpp:135
+    #3 0x55bd2db56c32 in prog::Script::run() /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Script.cpp:57
+    #4 0x55bd2db4720a in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:43
+    #5 0x55bd2db47f8d in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:79
+    #6 0x55bd2db49d37 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:165
+    #7 0x55bd2db4632b in main /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:186
+    #8 0x7fd4e0de4082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #9 0x55bd2db45edd in _start (/mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test+0x88edd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Image.cpp:34 in prog::Image::height() const
+==7862==ABORTING
+>>>> [4] xpm2_open4 <<<<
+Executing command 'xpm2_open' ...
+Executing command 'input/mondrian.xpm' ...
+Executing command 'save' ...
+PNG.cpp:31:30: runtime error: member call on null pointer of type 'const struct Image'
+Image.cpp:34:18: runtime error: member access within null pointer of type 'const struct Image'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==7863==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000004 (pc 0x55bd2db55439 bp 0x7ffe334d9f20 sp 0x7ffe334d9f10 T0)
+==7863==The signal is caused by a READ memory access.
+==7863==Hint: address points to the zero page.
+    #0 0x55bd2db55438 in prog::Image::height() const /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Image.cpp:34
+    #1 0x55bd2dba4d24 in prog::saveToPNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, prog::Image const*) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/PNG.cpp:31
+    #2 0x55bd2db5795e in prog::Script::save() /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Script.cpp:135
+    #3 0x55bd2db56c32 in prog::Script::run() /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Script.cpp:57
+    #4 0x55bd2db4720a in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:43
+    #5 0x55bd2db47f8d in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:79
+    #6 0x55bd2db49d37 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:165
+    #7 0x55bd2db4632b in main /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:186
+    #8 0x7fd4e0de4082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #9 0x55bd2db45edd in _start (/mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test+0x88edd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Image.cpp:34 in prog::Image::height() const
+==7863==ABORTING
+>>>> [5] xpm2_open5 <<<<
+Executing command 'xpm2_open' ...
+Executing command 'input/lion.xpm' ...
+Executing command 'save' ...
+PNG.cpp:31:30: runtime error: member call on null pointer of type 'const struct Image'
+Image.cpp:34:18: runtime error: member access within null pointer of type 'const struct Image'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==7864==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000004 (pc 0x55bd2db55439 bp 0x7ffe334d9f20 sp 0x7ffe334d9f10 T0)
+==7864==The signal is caused by a READ memory access.
+==7864==Hint: address points to the zero page.
+    #0 0x55bd2db55438 in prog::Image::height() const /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Image.cpp:34
+    #1 0x55bd2dba4d24 in prog::saveToPNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, prog::Image const*) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/PNG.cpp:31
+    #2 0x55bd2db5795e in prog::Script::save() /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Script.cpp:135
+    #3 0x55bd2db56c32 in prog::Script::run() /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Script.cpp:57
+    #4 0x55bd2db4720a in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:43
+    #5 0x55bd2db47f8d in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:79
+    #6 0x55bd2db49d37 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:165
+    #7 0x55bd2db4632b in main /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test.cpp:186
+    #8 0x7fd4e0de4082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #9 0x55bd2db45edd in _start (/mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/test+0x88edd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /mnt/c/Users/cmps5/Documents/CarlosSantos/Program/proj/Image.cpp:34 in prog::Image::height() const
+==7864==ABORTING
+>>>> [6] xpm2_save1 <<<<
+Executing command 'open' ...
+Executing command 'xpm2_save' ...
+Executing command 'output/xpm2_save1.xpm' ...
+Executing command 'blank' ...
+Executing command 'xpm2_open' ...
+Executing command 'output/xpm2_save1.xpm' ...
+Executing command 'save' ...
+Images have different dimensions: 16x7 != 1x1
+>>>> [7] xpm2_save2 <<<<
+Executing command 'open' ...
+Executing command 'xpm2_save' ...
+Executing command 'output/xpm2_save2.xpm' ...
+Executing command 'blank' ...
+Executing command 'xpm2_open' ...
+Executing command 'output/xpm2_save2.xpm' ...
+Executing command 'save' ...
+Images have different dimensions: 150x150 != 1x1
+>>>> [8] xpm2_save3 <<<<
+Executing command 'open' ...
+Executing command 'xpm2_save' ...
+Executing command 'output/xpm2_save3.xpm' ...
+Executing command 'blank' ...
+Executing command 'xpm2_open' ...
+Executing command 'output/xpm2_save3.xpm' ...
+Executing command 'save' ...
+Images have different dimensions: 300x300 != 1x1
+>>>> [9] xpm2_save4 <<<<
+Executing command 'open' ...
+Executing command 'xpm2_save' ...
+Executing command 'output/xpm2_save4.xpm' ...
+Executing command 'blank' ...
+Executing command 'xpm2_open' ...
+Executing command 'output/xpm2_save4.xpm' ...
+Executing command 'save' ...
+Images have different dimensions: 270x480 != 1x1
+>>>> [10] xpm2_save5 <<<<
+Executing command 'open' ...
+Executing command 'xpm2_save' ...
+Executing command 'output/xpm2_save5.xpm' ...
+Executing command 'blank' ...
+Executing command 'xpm2_open' ...
+Executing command 'output/xpm2_save5.xpm' ...
+Executing command 'save' ...
+Images have different dimensions: 250x380 != 1x1
