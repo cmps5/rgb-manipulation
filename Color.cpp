@@ -25,6 +25,7 @@ namespace prog
         this->_blue = blue;
     }
 
+    // Getters
     // Get values for individual RGB color channels
     rgb_value Color::red() const
     {

@@ -5,6 +5,9 @@
 #include <fstream>
 #include "Image.hpp"
 
+#define LEFT -1
+#define RIGHT 1
+
 namespace prog
 {
   class Script
@@ -19,6 +22,7 @@ namespace prog
     Image *image;
     // Input stream for reading script commands.
     std::ifstream input;
+    
 
   private:
     // Private functions

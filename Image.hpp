@@ -7,7 +7,7 @@ namespace prog
   class Image
   {
   private:
-    // TODO: define private fields for image state
+    // private fields for image state
     int _width;
     int _height;
     Color **_color;

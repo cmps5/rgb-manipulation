@@ -23,6 +23,7 @@ namespace prog
     delete[] this->_color;
   }
 
+  // Getters
   // Get image width
   int Image::width() const
   {

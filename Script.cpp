@@ -51,7 +51,6 @@ namespace prog
                 blank();
                 continue;
             }
-            // Other commands require an image to be previously loaded.
             if (command == "save")
             {
                 save();
@@ -107,7 +106,21 @@ namespace prog
                 rotate_right();
                 continue;
             }
-            // TODO ...
+            if (command == "median_filter")
+            {
+                median_filter();
+                continue;
+            }
+            if (command == "xpm2_open")
+            {
+                xpm2_open();
+                continue;
+            }
+            if (command == "xpm2_save")
+            {
+                xpm2_save();
+                continue;
+            }
         }
     }
     void Script::open()
@@ -136,20 +149,22 @@ namespace prog
     }
 
     // simple image manipulations
+    // Transforms each individual pixel (r, g, b) to (255-r, 255-g, 255-b)
     void Script::invert()
     {
         for (int i = 0; i < image->width(); i++)
         {
             for (int j = 0; j < image->height(); j++)
             {
-                Color inverted = image->at(i, j);
-                inverted.red() = 255 - inverted.red();
-                inverted.green() = 255 - inverted.green();
-                inverted.blue() = 255 - inverted.blue();
-                image->at(i, j) = inverted;
+                Color _inverted = image->at(i, j);
+                _inverted.red() = 255 - _inverted.red();
+                _inverted.green() = 255 - _inverted.green();
+                _inverted.blue() = 255 - _inverted.blue();
+                image->at(i, j) = _inverted;
             }
         }
     }
+    // Transforms each individual pixel (r, g, b) to (v, v, v) where v = (r + g + b)/3
     void Script::to_gray_scale()
     {
         for (int i = 0; i < image->width(); i++)
@@ -167,6 +182,7 @@ namespace prog
             }
         }
     }
+    // Replaces all rgb1 pixels by given rgb2
     void Script::replace()
     {
         // rgb_value r1, g1, b1, r2, g2, b2;
@@ -186,6 +202,7 @@ namespace prog
             }
         }
     }
+    // Fill the rectangle defined by top-left corner (x, y), width w, and height h with the given rgb color
     void Script::fill()
     {
         int x, y, w, h;
@@ -203,9 +220,10 @@ namespace prog
             }
         }
     }
+    // Mirror image horizontally
     void Script::h_mirror()
     {
-        // backup the data of the current image
+        // store the data from the current image
         int w = image->width(), h = image->height();
         Color **_mirror = new Color *[w];
         for (int i = 0; i < w; i++)
@@ -219,6 +237,7 @@ namespace prog
             }
         }
 
+        // mirror image horizontally
         for (int i = 0; i < image->width(); i++)
         {
             for (int j = 0; j < image->height(); j++)
@@ -233,9 +252,10 @@ namespace prog
             delete[] _mirror[i];
         delete[] _mirror;
     }
+    // Mirror image vertically
     void Script::v_mirror()
     {
-        // backup the data of the current image
+        // store the data from the current image
         int w = image->width(), h = image->height();
         Color **_mirror = new Color *[w];
         for (int i = 0; i < w; i++)
@@ -249,6 +269,7 @@ namespace prog
             }
         }
 
+        // mirror image vertically
         for (int i = 0; i < image->width(); i++)
         {
             for (int j = 0; j < image->height(); j++)
@@ -263,9 +284,13 @@ namespace prog
             delete[] _mirror[i];
         delete[] _mirror;
     }
+    /*
+        Copy all pixels from image stored in PNG file filename, except pixels in that image with “neutral” color
+        to the rectangle of the current image with top-left corner (x, y) of the current image
+     */
     void Script::add()
     {
-        // backup the data of the current image
+        // store the data from the current image
         int w = image->width(), h = image->height();
         Color **_add = new Color *[w];
         for (int i = 0; i < w; i++)
@@ -279,8 +304,7 @@ namespace prog
             }
         }
 
-        // Replace image for the src image to be added
-        open();
+        open(); // replace current image with stored image to be added
 
         int neutral_r, neutral_g, neutral_b;
         int x, y;
@@ -301,6 +325,7 @@ namespace prog
             }
         }
 
+        // creat new image and fill with added pixels
         clear_image_if_any();
         image = new Image(w, h);
         for (int i = 0; i < w; i++)
@@ -319,6 +344,7 @@ namespace prog
     }
 
     // dimension-changing operations
+    // Crop the image, reducing it to all pixels contained in the rectangle defined by top-left corner (x, y), width w, and height h
     void Script::crop()
     {
         int x, y, w, h;
@@ -351,22 +377,25 @@ namespace prog
             delete[] _crop[i];
         delete[] _crop;
     }
+    // Rotate image left by 90 degrees
     void Script::rotate_left()
     {
-        rotate(-1); // LEFT - 1
+        rotate(LEFT);
     }
+    // Rotate image right by 90 degrees
     void Script::rotate_right()
     {
-        rotate(1); // RIGHT 1
+        rotate(RIGHT);
     }
-    void Script::rotate(int dir)
+    // Rotate image left or right by 90 degrees, according to given direction
+    void Script::rotate(int direction)
     {
         int w, h;
         w = image->height();
         h = image->width();
         Color **_rotate = new Color *[w];
 
-        if (dir == -1) // rotate left
+        if (direction == LEFT) // Rotate image left by 90 degrees
         {
             for (int i = 0; i < w; i++)
             {
@@ -379,7 +408,7 @@ namespace prog
                 }
             }
         }
-        else // rotate right
+        else // Rotate image right by 90 degrees
         {
             for (int i = w - 1; i >= 0; i--)
             {
@@ -408,13 +437,14 @@ namespace prog
             delete[] _rotate[i];
         delete[] _rotate;
     }
-
+    // Advanced functionality
+    // Apply a median filter with window size ws >= 3 to the current image
     void Script::median_filter()
     {
         int ws;
         input >> ws;
 
-        // backup the data of the current image
+        // store the data from the current image
         int w = image->width(), h = image->height();
         Color **_median = new Color *[w];
         for (int i = 0; i < w; i++)
@@ -432,17 +462,24 @@ namespace prog
         {
             for (int j = 0; j < image->height(); j++)
             {
+                // TODO
             }
         }
+
+        // TODO
 
         for (int i = 0; i < w; i++)
             delete[] _median[i];
         delete[] _median;
     }
+    // Read image stored in the XPM2 file format
     void Script::xpm2_open()
     {
+        // TODO
     }
+    // Saves current image in XPM2 format to filename
     void Script::xpm2_save()
     {
+        // TODO
     }
 }
